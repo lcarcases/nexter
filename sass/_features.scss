@@ -1,0 +1,71 @@
+.features {
+    grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+
+    // Implementing progressive enhancement
+    @supports(display: grid) {
+      display: grid;
+      /**
+        With auto-fit i say that set automatically columns,
+        only taking in account that his min width can't be less
+        than 25rem
+      **/
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      grid-gap: 6rem;
+      /** This is for all text be aligned at the begging
+          no matter the total lines of paragraph 
+      **/
+      align-items: start;       
+    }
+}
+
+/**
+ Set style for each feature 
+**/
+.feature {
+
+    // Old browser
+    float: left;
+    width: 33.3333%;
+    margin-bottom: 6rem;
+
+    // Disabling old browser configuration in case we hace grid css in our browser
+    @supports(display: grid) {
+       width: auto;
+       margin-bottom: auto;
+    }
+
+    /**
+      Here we define a new grid for the feature element itself
+    **/
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    /**
+     Define space between rows and columns 
+    **/
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        // Set background color to svg element
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        /**
+          Use this to push text feature to the right column, withouth this
+          it would appear on first column second row, with this will appear
+          in second row and second column.
+
+          Note: In this case we use sapn 2 instead -1, because -1 is for explicit
+          grid , and in this case second row is implicit grid and it wouldn't recongnize
+          second row with -1
+        **/
+        grid-row: 1 / span 2;
+        transform: translateY(-1rem);
+    }  
+    
+    &__text {
+        font-size: 1.7rem;
+    }
+}

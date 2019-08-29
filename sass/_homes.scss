@@ -1,0 +1,103 @@
+.homes {
+    grid-column: center-start / center-end;
+    margin: 15rem 0;
+
+    display: grid;
+    /**
+      With auto-fit we say to grid that automatically adjust
+      the columns taking in account that each one has a minimun
+      size of 25rem
+    **/
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    // Space between columns
+    grid-gap: 7rem;
+
+}
+
+.home {
+    background-color: $color-grey-light-1;
+
+    display: grid;
+    // Create two equals columns
+    grid-template-columns: repeat(2, 1fr);
+    // Create space between rows
+    grid-row-gap: 3.5rem;
+    
+    &__img {
+        width: 100%;
+        // This make like icon dont move down the image
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+        z-index: 1;
+    }
+
+    &__like {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        fill: $color-primary;
+        height: 2.5rem;
+        width: 2.5rem;
+        z-index: 2;
+        // Set the like herat to the end
+        justify-self: end;
+        // Space around
+        margin: 1rem;
+    }
+
+    &__name {
+        // Positioning
+        grid-row: 1 / 2;
+        grid-column: 1 / -1;
+        // Center horizontally
+        justify-self: center;
+        // Set to bottom
+        align-self: end;
+        z-index: 3;
+
+        // It makes don't occupy al width
+        width: 80%;
+        font-family: $font-display;
+        font-size: 1.6rem;
+        text-align: center;
+        padding: 1.25rem;
+        background-color: $color-secondary;
+        color: #fff;
+        font-weight: 400;
+        // Put the text at the middle of bottom line of image 
+        transform: translateY(50%);
+    }
+
+    /**
+      Space between text card title and icons features of house  
+    **/
+    &__location,
+    &__rooms {
+        margin-top: 2.5rem;
+    }
+
+    &__location,
+    &__rooms,
+    &__area,
+    &__price {
+
+        font-size: 1.5rem;
+        margin-left: 2rem;
+
+        // Set icon and text side by side
+        display: flex;
+        align-items: center;
+
+
+        svg {
+           fill: $color-primary;
+           height: 2rem;
+           width:  2rem;
+           // Set a little space to the right of icon and separate it slightly from text
+           margin-right: 1rem; 
+        }
+    }
+
+    &__btn {
+        grid-column: 1 / -1;
+    }
+}

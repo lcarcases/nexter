@@ -1,0 +1,88 @@
+.header {
+    background-color: $color-grey-dark-1;
+    /**
+      Here we say, that header finish in the 6th column of col-end direction 
+    **/
+    grid-column: full-start / col-end 6;
+    background-image: linear-gradient( rgba($color-secondary, .93), rgba($color-secondary, .93)), url(../img/hero.jpeg);
+    /** 
+      Specifies the size of the background images and in this case resize the image
+      to cover the entire container
+    **/
+    background-size: cover;
+    // Center bg image
+    background-position: center;
+    padding: 8rem;
+    padding-top: 4rem;
+
+    display: grid;
+    /** 
+      This set the space of nexter icon because .container class occupy 80%, then header
+      first row occupy 80% too. Minmax is a fuction to avoid overlaping text and button
+    **/
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    // For column fit the content. I use minmax function for responsive design when strech viewport
+    grid-template-columns : minmax(min-content, max-content);
+    grid-row-gap: 1.5rem; 
+    // Center all content header
+    justify-content: center;
+
+    /**
+     Make header occupy all screen width 
+    **/
+    @media only screen and (max-width: $bp-medium) {
+      grid-column: 1 / -1;  
+    }
+
+
+    &__logo {
+       height: 3rem;
+       justify-self: center;
+    }
+
+    // Set header button to the beggining
+    &__btn {
+      align-self: start;
+      justify-self: start;
+    }
+
+    &__seenon-text {
+          /**
+            I would be onle the text div, i couldn't use grid, but, because i iuse
+            seudo clases before and after, i can use  grid layout 
+          **/
+          display: grid;
+          grid-template-columns: 1fr max-content 1fr;
+          grid-column-gap: 1.5rem;
+          align-items: center;
+
+          font-size: 1.6rem;
+          color: $color-grey-light-2;
+
+          /**
+            Use before and after to paint lines before and after the text
+          **/
+          &::before,
+          &::after {
+              content: "";
+              height: 1px;
+              display: block;
+              background-color: currentColor;
+          }
+    }
+
+    &__seenon-logos {
+
+       display: grid;
+       grid-template-columns: repeat(4, 1fr);
+       grid-column-gap: 3rem;
+       justify-items: center; 
+       align-items: center;
+
+       img {
+            max-height: 2.5rem;
+            max-width: 100%;
+            filter: brightness(70%);
+       }
+    }
+}

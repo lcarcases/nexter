@@ -1,0 +1,70 @@
+.sidebar {
+    background-color: $color-primary;
+    // Define colums that sidebar will occupy
+    grid-column: sidebar-start / sidebar-end;
+    // Define tha sidebar occupy all rows
+    grid-row: 1 / -1;
+
+    // Centering three lines icon menu
+    display: flex;
+    justify-content: center;
+
+    // Repositioning main menu on top
+    @media only screen and (max-width: $bp-large) { 
+       grid-column: 1 / -1;
+       grid-row: 1 / 2;
+
+       // Set menu icon to  the end and align it to center
+       justify-content: flex-end;
+       align-items: center;
+    }
+}
+
+.nav-btn {
+
+    // Drawing middle line of icon menu 
+    border: none;
+    border-radius: 0;
+    background-color: #fff;
+    height: 2px;
+    width: 4.5rem;
+    // Center menu item icon
+    justify-content: center;
+    
+    // Drawing first and last menu items lines
+    &::before,
+    &::after {
+        background-color: #fff;
+        height: 2px;
+        width: 4.5rem;
+        content: "";
+        display: block;
+    }
+
+    //Positioning first line of menu
+    &::before {
+        transform: translateY(-1.5rem);
+    }
+
+    //Positioning last line of menu
+    &::after {
+        transform: translateY(1.3rem);
+    }
+
+    // Adjust navigation icon
+    @media only screen and (max-width: $bp-large) { 
+        
+        margin-top: 0;
+        margin-right: 3rem;  
+       
+        //Positioning first line of menu
+        &::before {
+            transform: translateY(-1.2rem);
+        }
+
+        //Positioning last line of menu
+        &::after {
+            transform: translateY(1rem);
+        }
+    }
+}
